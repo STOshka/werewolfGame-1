@@ -9,7 +9,7 @@ pl.view.prophetRound = {
 
     var NextBtn = document.getElementById('btnNext');
     // get who is still living
-    var textLive = GameMethod.getLivingPlayer(game);
+    var textLive =""; //GameMethod.getLivingPlayer(game);
     document.getElementById('night').innerHTML =
     '第'+game.nRound+'晚\n' + textLive;
 
