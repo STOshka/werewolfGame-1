@@ -19,6 +19,7 @@ class Wolf extends Player {
   constructor() {
     super(); // need to be called before use "this"
     this.type = "Wolf";
+    this.name = '狼人';
   }
 }
 
@@ -26,6 +27,7 @@ class WolfKing extends Wolf {
   constructor() {
     super();
     this.type = 'WolfKing';
+    this.name = '白狼王';
   }
 }
 
@@ -33,6 +35,7 @@ class Citizen extends Player {
   constructor() {
   super();
   this.type = 'Citizen';
+  this.name = '村民';
   }
 }
 
@@ -41,6 +44,7 @@ class StrongCitizen extends Citizen {
     super();
     this.type = 'StrongCitizen';
     this.life = 2;
+    this.name = '强民';
   }
 }
 
@@ -48,6 +52,7 @@ class Prophet extends Player {
   constructor() {
     super();
     this.type = 'Prophet';
+    this.name = '预言家';
   }
 }
 
@@ -55,6 +60,7 @@ class Witch extends Player {
   constructor() {
     super();
     this.type = 'Witch';
+    this.name = '女巫';
     this.cureCount = 1;
     this.poisonCount = 1;
   }
@@ -64,6 +70,7 @@ class Hunter extends Player {
   constructor() {
     super();
     this.type = 'Hunter';
+    this.name = '猎人';
   }
 }
 
@@ -71,5 +78,6 @@ class Defender extends Player {
   constructor() {
     super();
     this.type = 'Defender';
+    this.name = '守卫';
   }
 }
