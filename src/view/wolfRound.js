@@ -37,6 +37,18 @@ pl.view.wolfRound = {
       pl.view.wolfRound.handleAssignID);
     }
 
+    //get select to kill form
+    var sl = document.getElementById('selectKill');
+    var PArray = GameMethod.selectLivingP(game);
+    for (var i=0;i<PArray.length;i++){
+      if (PArray[i] != undefined){
+        var opt = document.createElement("option");
+        opt.value = i+1;
+        opt.innerHTML = PArray[i];
+        sl.appendChild(opt);
+      }
+    }
+
     Killbtn.addEventListener('click',
     pl.view.wolfRound.handleGetKillIDonClick);
   },
@@ -54,9 +66,9 @@ pl.view.wolfRound = {
   },
 
   handleGetKillIDonClick: function(){
-    var x = document.getElementById('frmkillID');
+    var sl = document.getElementById('selectKill');
     var game = Game.load();
-    var nK = Number(x.elements[0].value);
+    var nK = Number(sl.value);
     GameMethod.check_input(nK,game,'death');
     game.nK = nK;
     Game.save(game);
@@ -68,7 +80,7 @@ pl.view.wolfRound = {
       return;
     }
     // go to next page
-      window.location = 'defenderRound.html';
+     window.location = 'defenderRound.html';
   }
 
 }
