@@ -36,6 +36,12 @@ button{
   background-color: rgba(0, 0, 0, 0.05);
   border: 1px solid;
 }
+select{
+  width: 150px;
+  padding: 50px 50px;
+  margin: 5px 0;
+  font-size: 16px;
+}
   </style>
 </head>
 
@@ -46,8 +52,8 @@ button{
 <label id = "showTEXT"></label>
 <form id= "frmDefenderID">
 </form>
-<form id = "frmGuardID">请输入要守卫的人的号码<br>
-  <input type = "number" id = "GuardID"><br>
+<form id = "frmGuardID"><p id = 'guardstatus'>请输入要守卫的人的号码</p>
+    <select id = "select"></select>
 </form>
 <br>
 <button type = "button" id = "btnNext" style="height:40px;width:100px">
