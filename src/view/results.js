@@ -140,7 +140,7 @@ pl.view.results = {
     }
     Game.save(game);
   },
-
+  //带走玩家
   handleWolfKillonClick: function(){
     var x = document.getElementById('wolfkill');
     var ID = Number(x.value);
@@ -151,7 +151,7 @@ pl.view.results = {
     ID + '号玩家被带走';
     Game.save(game);
   },
-
+  //显示游戏结果
   handleGetResonClick: function(){
     var game = Game.load();
     var TEXT = GameMethod.getLivingPlayer(game);
