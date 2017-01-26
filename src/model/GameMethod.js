@@ -75,6 +75,18 @@ class GameMethod {
     return text;
   }
 
+  static selectLivingP(game){
+    var n = game.player.length;
+    var PArray = new Array(n);
+    for(var i=0;i<n;i++){
+      var isDead = game.player[i].isDead;
+      if (!isDead){
+        PArray[i]=(i+1)+ '号';
+      }
+    }
+    return PArray;
+  }
+
   static assign_citizenID(game){
     var n = 0;
     for (var i=0;i<game.player.length;i++){
