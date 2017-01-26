@@ -36,6 +36,12 @@ button{
   background-color: rgba(0, 0, 0, 0.05);
   border: 1px solid;
 }
+select{
+  width: 150px;
+  padding: 50px 50px;
+  margin: 5px 0;
+  font-size: 50px;
+}
   </style>
 </head>
 
@@ -44,7 +50,7 @@ button{
 <p style="color:red;font-size:18px;">狼人请睁眼</p>
 <form id= "frmWolfID"></form>
 <form id = "frmkillID">请输入要杀的玩家号码<br>
-  <input type = "number",id = "killID"><br>
+  <select id = "selectKill"></select>
 </form>
 <br>
 <button type = "button" id = "btnNext" style="height:40px;width:100px">
