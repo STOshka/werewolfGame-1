@@ -20,7 +20,7 @@ pl.view.wolfRound = {
       for (var i = 0;i<game.wolf.length;i++){
         var input = document.createElement("input");
         //var ii = i+1;
-        input.type = "text";
+        input.type = "number";
         input.name = "wolf"+ (i+1);
         if (i == 0 && game.wolfking !== null){
           input.placeholder = "请输入白狼王的号码";
