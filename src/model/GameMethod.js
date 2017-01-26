@@ -67,8 +67,8 @@ class GameMethod {
     for (var i=0;i<game.player.length;i++){
       var isDead = game.player[i].isDead;
       if (!isDead){
-        text += (i+1) + '号'+
-        game.player[i].type + '， ';
+        text += (i+1) + '号 '+
+        game.player[i].name + '， ';
       }
     }
     //text += '号'
