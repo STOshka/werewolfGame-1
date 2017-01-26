@@ -14,6 +14,7 @@ pl.view.defenderRound = {
 
 
     //get defender ID in the 1st round
+    var isSkip = false;
     if (game.nRound == 1){
       document.getElementById('showTEXT').innerHTML =
       '请输入守卫号码';
@@ -25,25 +26,37 @@ pl.view.defenderRound = {
       form.appendChild(document.createElement("br"));
       NextBtn.addEventListener('click',
       pl.view.defenderRound.handleAssignIDonClick);
-      NextBtn.addEventListener('click',
-      pl.view.defenderRound.handleGetGuardIDonClick);
     }
     else{
       for (var i=0;i<game.player.length;i++){
         if (game.player[i].type == 'Defender'){
           var defender = game.player[i];
+          isSkip = defender.isDead;
         }
       }
-      if(defender.isDead){
-        var x =  document.getElementById('GuardID');
-        x.placeholder = "守卫已死亡";
-        x.disabled = "disabled";
-      }
-      else{
-        NextBtn.addEventListener('click',
-        pl.view.defenderRound.handleGetGuardIDonClick);
+    }
+
+    var sl = document.getElementById('select');
+    var PArray = GameMethod.selectLivingP(game);
+    for (var i=0;i<PArray.length;i++){
+      if (PArray[i] != undefined){
+        var opt = document.createElement("option");
+        opt.value = i+1;
+        opt.innerHTML = PArray[i];
+        sl.appendChild(opt);
       }
     }
+
+    if(!isSkip){
+      NextBtn.addEventListener('click',
+      pl.view.defenderRound.handleGetGuardIDonClick);
+    }
+    else{
+      var x =  document.getElementById('guardstatus');
+      x.innerHTML= "守卫已死亡";
+      sl.disabled = "disabled";
+    }
+
     NextBtn.addEventListener('click',
     pl.view.defenderRound.handleNextNightonClick);
   },
@@ -60,9 +73,9 @@ pl.view.defenderRound = {
   },
 
   handleGetGuardIDonClick: function(){
-    var x = document.getElementById('frmGuardID');
+    var x = document.getElementById('select');
     var game = Game.load();
-    var nG = Number(x.elements[0].value);
+    var nG = Number(x.value);
     GameMethod.check_input(nG,game,'death');
     if (nG !== game.nG_pre || nG == 0){
       game.nG = nG;
@@ -73,7 +86,7 @@ pl.view.defenderRound = {
       game.validInput = false;
     }
     Game.save(game);
-    console.log(game.nG + 'is guarded');
+    console.log(game.nG + ' is guarded');
   },
 
   handleNextNightonClick: function(){
