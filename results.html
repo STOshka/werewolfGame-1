@@ -50,6 +50,12 @@ input {
     margin: 5px 0;
     box-sizing: border-box;
 }
+select{
+  width: 120px;
+  padding: 50px 50px;
+  margin-right: 50px;
+  font-size: 16px;
+}
   </style>
 </head>
 
@@ -62,9 +68,9 @@ input {
 <p id = 'results'></p>
 
 <div class = 'ex0'>
-请输入要投死的玩家号码<br>
-<input type = 'number' id = 'vote'>
-<button type = "button" id = "btnV2Die">确认</button><br>
+请选择要投死的玩家<br>
+<select id = 'vote'></select>
+<button type = "button" id = "btnV2Die" style = "height:30px;width:80px">确认</button><br>
 <label id = 'lastword'></label>
 <br>
 </div>
