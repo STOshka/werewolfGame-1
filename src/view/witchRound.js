@@ -71,7 +71,7 @@ pl.view.witchRound = {
           pl.view.witchRound.handleShowPoisonInput);
       }
       else{
-          input.disabled = 'disabled';
+          poison.disabled = 'disabled';
           expl.innerHTML += '毒药已使用完 ';
       }
     }
@@ -105,15 +105,24 @@ pl.view.witchRound = {
     if (form.elements[0] !== undefined){
       return;
     }
-    var input = document.createElement("input");
-    input.type = "text";
-    input.id = "PoisonID";
-    input.placeholder = '输入要毒死的人的号码';
-    form.appendChild(input);
-    form.appendChild(document.createElement("br"));
+    form.innerHTML = '选择要毒死的人<br>'
+    var game = Game.load();
+    var sl = document.createElement("select");
+    form.appendChild(sl);
+    var PArray = GameMethod.selectLivingP(game);
+    for (var i=0;i<PArray.length;i++){
+      if (PArray[i] != undefined){
+        var opt = document.createElement("option");
+        opt.value = i+1;
+        opt.innerHTML = PArray[i];
+        sl.appendChild(opt);
+      }
+    }
+    var opt = document.createElement("option");
+    opt.value = 0;
+    opt.innerHTML = '放弃';
+    sl.appendChild(opt);
     var NextBtn = document.getElementById('btnNext');
-    // NextBtn.addEventListener('click',
-    // pl.view.witchRound.handleAssignPoisonID);
   },
 
   handleAssignPoisonID: function(){

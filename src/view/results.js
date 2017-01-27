@@ -12,6 +12,21 @@ pl.view.results = {
     }
     document.getElementById('intro').innerHTML = intro;
 
+    // add select options
+    sl = document.getElementById('vote');
+    var game = Game.load();
+    var PArray = GameMethod.selectLivingP(game);
+    for (var i=0;i<PArray.length;i++){
+      if (PArray[i] != undefined){
+        var opt = document.createElement("option");
+        opt.value = i+1;
+        opt.innerHTML = PArray[i];
+        sl.appendChild(opt);
+      }
+    }
+
+
+
     // click to show resutls
     var btnShow = document.getElementById('btnShow');
     btnShow.addEventListener('click',

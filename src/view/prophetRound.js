@@ -34,15 +34,26 @@ pl.view.prophetRound = {
       }
     }
 
+    var frmExam = document.getElementById('frmExamID');
+    //var sl = document.getElementById('ExamID');
     if (game.nRound > 1 && pl_prophet.isDead){
-      var input = document.getElementById('ExamID');
-      input.placeholder = '预言家已死亡';
-      input.disabled = "disabled";
+      frmExam.innerHTML = '预言家已死亡<br>';
     }
-
     else {
-      var input = document.getElementById('ExamID');
-      input.placeholder = '请输入要验的玩家号码';
+      frmExam.innerHTML = '请输入要验的玩家号码<br>';
+      var sl = document.createElement("select");
+      sl.id = 'ExamID';
+      frmExam.appendChild(sl);
+      var game = Game.load();
+      var PArray = GameMethod.selectLivingP(game);
+      for (var i=0;i<PArray.length;i++){
+        if (PArray[i] != undefined){
+          var opt = document.createElement("option");
+          opt.value = i+1;
+          opt.innerHTML = PArray[i];
+          sl.appendChild(opt);
+        }
+      }
       var ExamBtn = document.getElementById('btnExam');
       ExamBtn.addEventListener('click',
         pl.ctrl.prophetRound.handleAssignExamID);
